@@ -45,28 +45,65 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - MOPURI ANKITHA
+# Register Number: 212223040117
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+University
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![ER UNIVERSITY](https://github.com/user-attachments/assets/f0200a0b-e6d6-496c-803a-058c873ea6e2)
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+student: Name,Register Number,Year,Department
+
+Enrollment: Timing,Course Name,Faculty,Day
+
+Courses: Course Name,Course Type,Course Code,Credits
+
+Faculty Details:Faculty id, Faculty Name,Faculty Department
+
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
+•1.Enrollment (between Student and Enroll)
+Relationship: Enrollment
+Entities: Student — Enroll
+Cardinality:
+One student can enroll in many enrollments
+One enroll entry is linked to one student
+(1:N) from Student to Enroll
+
+•2. Courses (between Enroll and Courses Offered)
+Relationship: Courses
+Entities: Enroll — Courses Offered
+Cardinality:
+One enroll instance relates to one course offered
+One course offered can be part of many enrollments
+(N:1) from Enroll to Courses Offered
+
+•3.Relationship: Faculty
+Entities: Enroll — Faculty Details
+Cardinality:
+One faculty member can appear in many enrollments
+One enroll entry is managed by one faculty
+(N:1) from Enroll to Faculty Details
 
 ## Extension (Prerequisite / Billing):
-- Explain how you modeled prerequisites or billing.
+I modelled prerequisites using a recursive many-to-many relationship on the Courses Offered entity.
+This means each course can have multiple prerequisite courses, and a course can be a prerequisite for multiple others.
+The relationship is named "Prerequisite" and connects the CourseCode of one course to the CourseCode of another course within the same entity.
 
 ## Design Choices:
-Brief explanation of why you chose certain entities, relationships, and assumptions
+Student: To store personal details like registration number, name, and contact.
+
+Courses Offered: To manage course information like code, title, credits, etc.
+
+Faculty Details: To keep track of instructors linked to course delivery.
+
+Enroll: Used as a bridge entity to represent student registration for courses.
+
+Billing / Prerequisite: To track payments or course dependencies.
 
 ## RESULT
+The database was designed to manage information about students, courses, faculty, and enrollments in a university.This design helps organize all the important data clearly. It shows how students are linked to courses, which faculty teaches each course, and how course schedules are managed
+
